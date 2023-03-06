@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -115,10 +117,16 @@ void play(){
         cout << "what do you want to bet on (number / odd / even / black / red)" << endl;
         cin >> betType;
         betType_code = convertBetType(betType);
-
         player.placeBet(bet);
 
         number = table.spin_wheel();
+        cout<<"\n"<<endl;
+        for (int count = 3;count>0; count--){
+            cout << " * ";
+            cout.flush();
+            this_thread::sleep_for(chrono::seconds(1));
+        }
+        cout << number << "\n\n" << endl; 
         winnings = table.calculate_winnings(betType_code, number, bet);
         if (winnings> 0){
             // won money
