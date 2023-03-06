@@ -105,8 +105,13 @@ void play(){
 
     while(player.get_money() > 0){
         
-        cout << "How much do you want to bet ? current cash " << player.get_money() << endl;
+        cout << "How much do you want to bet ? current cash avilable " << player.get_money() << endl;
         cin >> bet;
+        while (bet > player.get_money()){
+            cout << "You do not have that amount of money to bet, please choose a bet less than " << player.get_money() << endl;
+            cin >> bet;
+        }
+
         cout << "what do you want to bet on (number / odd / even / black / red)" << endl;
         cin >> betType;
         betType_code = convertBetType(betType);
